@@ -9,19 +9,6 @@ __all__ = ["pickle", "constructor",
 
 dispatch_table = {}
 
-def pickle(ob_type, pickle_function, constructor_ob=None):
-    if not callable(pickle_function):
-        raise TypeError("reduction functions must be callable")
-    dispatch_table[ob_type] = pickle_function
-
-    # The constructor_ob function is a vestige of safe for unpickling.
-    # There is no reason for the caller to pass it anymore.
-    if constructor_ob is not None:
-        constructor(constructor_ob)
-
-def constructor(object):
-    if not callable(object):
-        raise TypeError("constructors must be callable")
 
 # Example: provide pickling support for complex numbers.
 
