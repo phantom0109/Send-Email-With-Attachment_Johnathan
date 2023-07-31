@@ -9,7 +9,16 @@ Unit tests are in test_collections.
 from abc import ABCMeta, abstractmethod
 import sys
 
-
+__all__ = ["Awaitable", "Coroutine",
+           "AsyncIterable", "AsyncIterator", "AsyncGenerator",
+           "Hashable", "Iterable", "Iterator", "Generator", "Reversible",
+           "Sized", "Container", "Callable", "Collection",
+           "Set", "MutableSet",
+           "Mapping", "MutableMapping",
+           "MappingView", "KeysView", "ItemsView", "ValuesView",
+           "Sequence", "MutableSequence",
+           "ByteString",
+           ]
 
 # This module has been renamed from collections.abc to _collections_abc to
 # speed up interpreter startup. Some of the types such as MutableMapping are
@@ -23,7 +32,28 @@ __name__ = "collections.abc"
 #       assert isinstance(it, Iterable)
 # Note:  in other implementations, these types might not be distinct
 # and they may have their own implementation specific types that
-
+# are not included on this list.
+bytes_iterator = type(iter(b''))
+bytearray_iterator = type(iter(bytearray()))
+#callable_iterator = ???
+dict_keyiterator = type(iter({}.keys()))
+dict_valueiterator = type(iter({}.values()))
+dict_itemiterator = type(iter({}.items()))
+list_iterator = type(iter([]))
+list_reverseiterator = type(iter(reversed([])))
+range_iterator = type(iter(range(0)))
+longrange_iterator = type(iter(range(1 << 1000)))
+set_iterator = type(iter(set()))
+str_iterator = type(iter(""))
+tuple_iterator = type(iter(()))
+zip_iterator = type(iter(zip()))
+## views ##
+dict_keys = type({}.keys())
+dict_values = type({}.values())
+dict_items = type({}.items())
+## misc ##
+mappingproxy = type(type.__dict__)
+generator = type((lambda: (yield))())
 ## coroutine ##
 async def _coro(): pass
 _coro = _coro()
