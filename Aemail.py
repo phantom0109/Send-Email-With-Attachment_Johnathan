@@ -31,12 +31,6 @@ def main():
     filename = 'test.pdf'
     attachment = open(filename, 'rb')
 
-    part = MIMEBase('application', 'octet-stream')
-    part.set_payload(attachment.read())
-    encoders.encode_base64(part)
-    part.add_header('content-disposition', "attachment; filename= "+filename)
-
-    msg.attach(part)
     text = msg.as_string()
 
     server = smtplib.SMTP('smtp.gmail.com', 587)
