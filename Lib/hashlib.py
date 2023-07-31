@@ -82,18 +82,7 @@ def __get_builtin_constructor(name):
         elif name in ('MD5', 'md5'):
             import _md5
             cache['MD5'] = cache['md5'] = _md5.md5
-        elif name in ('SHA256', 'sha256', 'SHA224', 'sha224'):
-            import _sha256
-            cache['SHA224'] = cache['sha224'] = _sha256.sha224
-            cache['SHA256'] = cache['sha256'] = _sha256.sha256
-        elif name in ('SHA512', 'sha512', 'SHA384', 'sha384'):
-            import _sha512
-            cache['SHA384'] = cache['sha384'] = _sha512.sha384
-            cache['SHA512'] = cache['sha512'] = _sha512.sha512
-        elif name in ('blake2b', 'blake2s'):
-            import _blake2
-            cache['blake2b'] = _blake2.blake2b
-            cache['blake2s'] = _blake2.blake2s
+        
         elif name in {'sha3_224', 'sha3_256', 'sha3_384', 'sha3_512',
                       'shake_128', 'shake_256'}:
             import _sha3
@@ -128,11 +117,6 @@ def __get_openssl_constructor(name):
         return __get_builtin_constructor(name)
 
 
-def __py_new(name, data=b'', **kwargs):
-    """new(name, data=b'', **kwargs) - Return a new hashing object using the
-    named algorithm; optionally initialized with data (which must be bytes).
-    """
-    return __get_builtin_constructor(name)(data, **kwargs)
 
 
 def __hash_new(name, data=b'', **kwargs):
