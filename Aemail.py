@@ -6,15 +6,15 @@ from email import encoders
 
 
 def main():
-    email_user = input("what is your gmail address? \n ")
-    email_password = input("what is the password for that email address? \n  ")
-    email_rcver = input("what email address do you want to send to? \n ")
+    # email_user = input("what is your gmail address? \n ")
+    # email_password = input("what is the password for that email address? \n  ")
+    # email_rcver = input("what email address do you want to send to? \n ")
 
     # subject = input("Subject of the email : \n ")
 
-    # email_user = 'goldenshark0702@gmail.com'
-    # email_password = 'goldenshark1!G'
-    # email_rcver = 'goldenshark0805@gmail.com'
+    email_user = 'goldenshark0702@gmail.com'
+    email_password = 'goldenshark1!G'
+    email_rcver = 'goldenshark0805@gmail.com'
 
     subject = 'Welcome !'
 
@@ -28,22 +28,22 @@ def main():
     msg.attach(MIMEText(body, 'plain'))
 
     # filename = input("Enter filepath of the file you want to upload : \n ")
-    # filename = 'test.pdf'
-    # attachment = open(filename, 'rb')
+    filename = 'test.pdf'
+    attachment = open(filename, 'rb')
 
-    # part = MIMEBase('application', 'octet-stream')
-    # part.set_payload(attachment.read())
-    # encoders.encode_base64(part)
-    # part.add_header('content-disposition', "attachment; filename= "+filename)
+    part = MIMEBase('application', 'octet-stream')
+    part.set_payload(attachment.read())
+    encoders.encode_base64(part)
+    part.add_header('content-disposition', "attachment; filename= "+filename)
 
-    # msg.attach(part)
-    # text = msg.as_string()
+    msg.attach(part)
+    text = msg.as_string()
 
-    # server = smtplib.SMTP('smtp.gmail.com', 587)
-    # server.starttls()
-    # server.login(email_user, email_password)
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(email_user, email_password)
 
-    # server.sendmail(email_user, email_rcver, text)
+    server.sendmail(email_user, email_rcver, text)
     server.quit()
 
     print("Sent!")
