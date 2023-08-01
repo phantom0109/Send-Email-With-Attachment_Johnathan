@@ -22,7 +22,6 @@ def pickle(ob_type, pickle_function, constructor_ob=None):
 def constructor(object):
     if not callable(object):
         raise TypeError("constructors must be callable")
-
 # Example: provide pickling support for complex numbers.
 
 try:
