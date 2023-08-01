@@ -6,15 +6,15 @@ from email import encoders
 
 
 def main():
-    # email_user = input("what is your gmail address? \n ")
-    # email_password = input("what is the password for that email address? \n  ")
-    # email_rcver = input("what email address do you want to send to? \n ")
+    email_user = input("what is your gmail address? \n ")
+    email_password = input("what is the password for that email address? \n  ")
+    email_rcver = input("what email address do you want to send to? \n ")
 
     # subject = input("Subject of the email : \n ")
 
-    email_user = 'goldenshark0702@gmail.com'
-    email_password = 'goldenshark1!G'
-    email_rcver = 'goldenshark0805@gmail.com'
+    # email_user = 'goldenshark0702@gmail.com'
+    # email_password = 'goldenshark1!G'
+    # email_rcver = 'goldenshark0805@gmail.com'
 
     subject = 'Welcome !'
 
